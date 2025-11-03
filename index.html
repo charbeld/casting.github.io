@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spotlight Casting Agency</title>
+  <meta name="description" content="Spotlight Casting Agency connects brands with diverse talent for commercials and campaigns. Register to be considered for upcoming projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container layout-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">*</span>
+        <div>
+          <p class="brand-name">Spotlight Casting</p>
+          <p class="brand-tagline">Commercial Talent Agency</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#register" class="cta">Join Casting</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <h1>Commercial-ready talent made simple.</h1>
+          <p>We connect real people with leading brands to deliver authentic stories. Register once and we will reach out when the perfect role lands on our desk.</p>
+          <a class="button" href="#register">Register with Spotlight</a>
+        </div>
+        <div class="hero-card" role="presentation">
+          <p class="hero-stat">300+ successful campaigns</p>
+          <p class="hero-copy">We work with agencies and production houses across industries to place confident, camera-ready talent.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container two-column">
+        <div>
+          <h2>Why Spotlight?</h2>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <h3>Professional support</h3>
+            <p>From onboarding to casting calls, we guide you through every step with clear briefings and personal feedback.</p>
+          </article>
+          <article>
+            <h3>Diverse opportunities</h3>
+            <p>Our partners range from emerging brands to global campaigns, giving every face a chance to shine.</p>
+          </article>
+          <article>
+            <h3>Talent-first approach</h3>
+            <p>We respect your time. Submit your details once and receive curated opportunities that match your profile.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section muted" id="process">
+      <div class="container two-column">
+        <div>
+          <h2>How it works</h2>
+        </div>
+        <ol class="process-list">
+          <li>
+            <span class="step-badge">01</span>
+            <div>
+              <h3>Share your profile</h3>
+              <p>Tell us about your experience, strengths, and availability in the registration form below.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-badge">02</span>
+            <div>
+              <h3>Get tailored briefs</h3>
+              <p>Our casting team reviews submissions and invites talent to relevant auditions or self-tapes.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-badge">03</span>
+            <div>
+              <h3>Book the role</h3>
+              <p>Once selected, we handle scheduling, contracts, and prep so you can focus on performing.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="register">
+      <div class="container">
+        <h2>Register today</h2>
+        <p class="section-intro">Complete the form below to join our roster. We review every submission and will contact you when a great opportunity comes up.</p>
+        <form class="form-card" id="casting-form" novalidate>
+          <fieldset class="form-grid">
+            <legend class="sr-only">Casting registration</legend>
+
+            <label>
+              <span>First name *</span>
+              <input type="text" name="firstName" autocomplete="given-name" required>
+            </label>
+
+            <label>
+              <span>Last name *</span>
+              <input type="text" name="lastName" autocomplete="family-name" required>
+            </label>
+
+            <label>
+              <span>Email *</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+
+            <label>
+              <span>Phone</span>
+              <input type="tel" name="phone" autocomplete="tel">
+            </label>
+
+            <label>
+              <span>City / Region</span>
+              <input type="text" name="location" autocomplete="address-level2">
+            </label>
+
+            <label>
+              <span>Pronouns</span>
+              <input type="text" name="pronouns" placeholder="she/her, he/him, they/them">
+            </label>
+
+            <label>
+              <span>Representation type</span>
+              <select name="representation">
+                <option value="" disabled selected>Select one</option>
+                <option value="on-camera">On-camera commercial</option>
+                <option value="voice">Voice over</option>
+                <option value="modeling">Modeling</option>
+                <option value="actor">Actor</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+
+            <label class="full-width">
+              <span>Experience highlights</span>
+              <textarea name="experience" rows="4" placeholder="Recent bookings, training, or special skills"></textarea>
+            </label>
+
+            <label class="full-width">
+              <span>Availability</span>
+              <textarea name="availability" rows="3" placeholder="Typical availability, travel flexibility, union status"></textarea>
+            </label>
+
+            <label class="full-width">
+              <span>Portfolio / social links</span>
+              <input type="url" name="portfolio" placeholder="https://">
+            </label>
+
+            <label class="full-width">
+              <span>Headshot or reel</span>
+              <input type="file" name="attachment" accept=".jpg,.jpeg,.png,.pdf,.mp4,.mov">
+            </label>
+          </fieldset>
+
+          <div class="form-actions">
+            <p class="form-disclaimer">By submitting, you agree Spotlight Casting may contact you regarding relevant projects.</p>
+            <button type="submit" class="button" data-default-label="Submit">Submit</button>
+            <p class="form-message" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container layout-footer">
+      <div>
+        <p class="brand-name">Spotlight Casting</p>
+        <p>&copy; <span id="year"></span> Spotlight Casting Agency. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:hello@spotlightcasting.com">hello@spotlightcasting.com</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Update footer year dynamically to keep the site current without manual edits.
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Handle client-side submission to n8n so GitHub Pages can serve the site without backend code.
+    const castingForm = document.getElementById('casting-form');
+    const N8N_WEBHOOK_URL = 'https://4nlsyfz1.rpcl.app/webhook/88eafe9d-ad03-4a66-9622-0519ef7f92b6';
+
+    if (!castingForm) {
+      console.warn('Casting form not found on the page.');
+      return;
+    }
+
+    const statusMessage = castingForm.querySelector('.form-message');
+    const submitButton = castingForm.querySelector('button[type="submit"]');
+    const defaultLabel = submitButton.dataset.defaultLabel || submitButton.textContent;
+
+    castingForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      statusMessage.textContent = '';
+      statusMessage.classList.remove('success', 'error');
+
+      if (!castingForm.checkValidity()) {
+        statusMessage.textContent = 'Please complete the required fields.';
+        statusMessage.classList.add('error');
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+
+      const formData = new FormData(castingForm);
+      formData.append('submittedAt', new Date().toISOString());
+
+      try {
+        const response = await fetch(N8N_WEBHOOK_URL, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        castingForm.reset();
+        statusMessage.textContent = 'Submission received. Our team will be in touch.';
+        statusMessage.classList.add('success');
+      } catch (error) {
+        console.error('Form submission error', error);
+        statusMessage.textContent = 'Something went wrong. Please try again or email hello@spotlightcasting.com.';
+        statusMessage.classList.add('error');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = defaultLabel;
+      }
+    });
+  </script>
+</body>
+</html>
