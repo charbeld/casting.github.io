@@ -20,10 +20,23 @@
           <p class="brand-tagline">Commercial Talent Agency</p>
         </div>
       </div>
-      <nav>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="nav-toggle-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <nav id="site-nav">
         <a href="#about">About</a>
         <a href="#process">Process</a>
+        <a href="#register">Register</a>
         <a href="#register" class="cta">Join Casting</a>
+        <button class="mode-toggle" type="button" aria-pressed="false">
+          <span class="mode-toggle-icon" aria-hidden="true"></span>
+          <span class="mode-toggle-label">Dark mode</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -39,6 +52,19 @@
         <div class="hero-card" role="presentation">
           <p class="hero-stat">300+ successful campaigns</p>
           <p class="hero-copy">We work with agencies and production houses across industries to place confident, camera-ready talent.</p>
+        </div>
+        <div class="hero-media">
+          <figure>
+            <picture>
+              <source srcset="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?auto=format&fit=crop&w=820&q=80" media="(min-width: 768px)">
+              <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=720&q=80" alt="Director reviewing footage with talent on set" loading="lazy">
+            </picture>
+            <figcaption class="media-caption">On set with our talent, guiding performances for national campaigns.</figcaption>
+          </figure>
+          <div class="media-collage">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80" alt="Spotlight Casting talent preparing for a commercial shoot" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=600&q=80" alt="Makeup artist putting finishing touches on an actor" loading="lazy">
+          </div>
         </div>
       </div>
     </section>
@@ -93,6 +119,31 @@
             </div>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <section class="section" id="talent">
+      <div class="container talent-highlight">
+        <div class="talent-intro">
+          <h2>Meet the talent we champion</h2>
+          <p>Our roster features experienced actors, charismatic presenters, real families, and standout personalities. We invest in professional development and ensure the talent we represent is ready for every brief.</p>
+        </div>
+        <div class="talent-grid">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Commercial actor posing in studio lighting" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Professional model smiling during a lifestyle shoot" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1526312473127-d7c47b1a8125?auto=format&fit=crop&w=600&q=80" alt="Voiceover talent recording in a modern booth" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" alt="Actors collaborating on a storyboard" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" alt="Behind-the-scenes moment during a campaign shoot" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=600&q=80" alt="Fashion talent walking through a commercial set" loading="lazy">
+        </div>
+        <div class="client-strip" aria-label="Clients">
+          <span>Google</span>
+          <span>Target</span>
+          <span>Spotify</span>
+          <span>Northwell Health</span>
+          <span>Shopify</span>
+          <span>Squarespace</span>
+        </div>
       </div>
     </section>
 
@@ -245,6 +296,68 @@
         }
       });
     }
+
+    // Handle responsive navigation toggle for smaller viewports.
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteNav = document.getElementById('site-nav');
+
+    if (navToggle && siteNav) {
+      const closeMenu = () => {
+        navToggle.setAttribute('aria-expanded', 'false');
+        siteNav.classList.remove('is-open');
+      };
+
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!isExpanded));
+        siteNav.classList.toggle('is-open', !isExpanded);
+      });
+
+      siteNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 721px)').matches) {
+          closeMenu();
+        }
+      });
+    }
+
+    // Manage dark mode toggle with system preference awareness.
+    const root = document.documentElement;
+    const themeStorageKey = 'spotlight-theme';
+    const modeToggle = document.querySelector('.mode-toggle');
+    const modeToggleLabel = modeToggle ? modeToggle.querySelector('.mode-toggle-label') : null;
+    const systemPreference = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const setTheme = (theme, persist = false) => {
+      root.setAttribute('data-theme', theme);
+      if (modeToggle) {
+        const isDark = theme === 'dark';
+        modeToggle.setAttribute('aria-pressed', String(isDark));
+        if (modeToggleLabel) {
+          modeToggleLabel.textContent = isDark ? 'Light mode' : 'Dark mode';
+        }
+      }
+      if (persist) {
+        localStorage.setItem(themeStorageKey, theme);
+      }
+    };
+
+    const storedTheme = localStorage.getItem(themeStorageKey);
+    setTheme(storedTheme || (systemPreference.matches ? 'dark' : 'light'));
+
+    if (!storedTheme) {
+      systemPreference.addEventListener('change', (event) => {
+        setTheme(event.matches ? 'dark' : 'light');
+      });
+    }
+
+    modeToggle?.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      setTheme(isDark ? 'light' : 'dark', true);
+    });
   </script>
 </body>
 </html>
